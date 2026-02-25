@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPi Literie - Le Luxe Accessible, Le Confort Abordable</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #c9a227;
+            --accent: #e8d5c4;
+            --light: #f9f7f4;
+            --dark: #1a1a1a;
+            --success: #27ae60;
+            --urgent: #e74c3c;
+            --money: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Announcement Bar */
+        .announcement-bar {
+            background: linear-gradient(90deg, var(--urgent) 0%, #c0392b 100%);
+            color: white;
+            text-align: center;
+            padding: 0.8rem;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .announcement-bar::before {
+            content: '🔥';
+            position: absolute;
+            left: -30px;
+            animation: slideFire 3s infinite;
+        }
+
+        @keyframes slideFire {
+            0% { left: -30px; }
+            100% { left: 110%; }
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo-main {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: 2px;
+        }
+
+        .logo-sub {
+            font-size: 0.75rem;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .slogan-header {
+            font-size: 0.8rem;
+            color: var(--urgent);
+            font-weight: 700;
+            margin-top: 2px;
+            font-style: italic;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .icon-btn {
+            background: none;
+            border: none;
+            font-size: 1.3rem;
+            color: var(--primary);
+            cursor: pointer;
+            position: relative;
+            transition: transform 0.3s;
+        }
+
+        .icon-btn:hover {
+            transform: scale(1.1);
+            color: var(--secondary);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--urgent);
+            color: white;
+            font-size: 0.7rem;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 90vh;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.9) 0%, rgba(201, 162, 39, 0.7) 100%),
+                        url('https://images.unsplash.com/photo-1505693416388-b0346efee535?w=1920') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--urgent);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            animation: shake 2s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            line-height: 1.2;
+        }
+
+        .hero-slogan {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+
+        .urgency-banner {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            margin: 2rem 0;
+            border: 2px solid var(--secondary);
+        }
+
+        .urgency-banner p {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(201, 162, 39, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(201, 162, 39, 0.6);
+        }
+
+        .btn-urgent {
+            background: var(--urgent);
+            color: white;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            animation: urgentPulse 2s infinite;
+        }
+
+        @keyframes urgentPulse {
+            0%, 100% { box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4); }
+            50% { box-shadow: 0 4px 25px rgba(231, 76, 60, 0.8); }
+        }
+
+        .btn-urgent:hover {
+            transform: translateY(-3px);
+            background: #c0392b;
+        }
+
+        /* Payment Methods Bar */
+        .payment-bar {
+            background: white;
+            padding: 2rem;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            z-index: 100;
+        }
+
+        .payment-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .payment-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .payment-item i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 20px;
+            background: var(--light);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .price-tag {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin-top: 0.5rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 2rem;
+            background: var(--light);
+        }
+
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--primary);
+            background: transparent;
+            color: var(--primary);
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active, .tab-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--urgent);
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            z-index: 2;
+            animation: pulse 2s infinite;
+        }
+
+        .product-badge.promo {
+            background: var(--success);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-category {
+            color: var(--secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .product-price-box {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .product-old-price {
+            font-size: 1rem;
+            color: #999;
+            text-decoration: line-through;
+        }
+
+        .savings {
+            background: var(--urgent);
+            color: white;
+            padding: 0.2rem 0.5rem;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-add-cart {
+            flex: 1;
+            padding: 0.8rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--secondary);
+            transform: scale(1.02);
+        }
+
+        .btn-pay-urgent {
+            padding: 0.8rem 1rem;
+            background: var(--money);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-pay-urgent:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        /* Custom Product Form */
+        .custom-product-section {
+            background: white;
+            padding: 4rem 2rem;
+            margin: 3rem 0;
+            border-radius: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .custom-products-list {
+            margin-top: 3rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .custom-product-card {
+            background: var(--light);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid var(--secondary);
+            position: relative;
+            animation: slideIn 0.5s ease;
+        }
+
+        .delete-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--urgent);
+            color: white;
+            border: none;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s;
+        }
+
+        .delete-btn:hover {
+            transform: scale(1.1);
+        }
+
+        /* Payment Modal */
+        .payment-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .payment-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s;
+        }
+
+        .payment-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s;
+        }
+
+        .payment-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .payment-header h2 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-header p {
+            color: #666;
+        }
+
+        .payment-methods {
+            display: grid;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .payment-method {
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .payment-method:hover, .payment-method.selected {
+            border-color: var(--secondary);
+            background: var(--light);
+        }
+
+        .payment-method i {
+            font-size: 2rem;
+            color: var(--secondary);
+        }
+
+        .payment-method-info h4 {
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .payment-method-info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .urgent-notice {
+            background: #fff3cd;
+            border: 2px solid var(--secondary);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .urgent-notice i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .payment-form input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-family: inherit;
+        }
+
+        .btn-pay-now {
+            width: 100%;
+            padding: 1rem;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-pay-now:hover {
+            background: #229954;
+            transform: scale(1.02);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--primary);
+            color: white;
+            padding: 5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--secondary);
+            width: 40px;
+        }
+
+        .whatsapp-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #25D366;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .contact-form {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 400px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 30px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.open {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 2rem;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cart-items {
+            flex: 1;
+            overflow-y: auto;
+            padding: 1rem;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--light);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            animation: slideIn 0.3s ease;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .cart-item-price {
+            color: var(--secondary);
+            font-weight: 700;
+        }
+
+        .cart-footer {
+            padding: 2rem;
+            border-top: 2px solid #eee;
+            background: white;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            padding: 1rem;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .btn-checkout:hover {
+            background: #229954;
+        }
+
+        .btn-whatsapp-checkout {
+            width: 100%;
+            padding: 1rem;
+            background: #25D366;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-whatsapp-checkout:hover {
+            background: #128C7E;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--success);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 3000;
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .hero h1 { font-size: 2rem; }
+            .hero-slogan { font-size: 1.2rem; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .cart-sidebar { width: 100%; right: -100%; }
+            .payment-container { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        🚨 LIVRAISON URGENTE DISPONIBLE 24/7 - PAYEZ EN LIGNE EN TOUTE SÉCURITÉ - PRÉCIPITEZ-VOUS, LES STOCKS SONT LIMITÉS ! 
+    </div>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <div class="logo-icon">MPi</div>
+                <div class="logo-text">
+                    <span class="logo-main">MPi</span>
+                    <span class="logo-sub">Literie & Confort</span>
+                    <span class="slogan-header">"Le luxe accessible, le confort abordable"</span>
+                </div>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#produits">Produits</a></li>
+                <li><a href="#personnaliser">Mes Articles</a></li>
+                <li><a href="#contact">Contact Urgent</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="icon-btn" onclick="toggleCart()">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+                <button class="icon-btn" onclick="openPaymentModal()" title="Paiement Urgent">
+                    <i class="fas fa-bolt" style="color: var(--urgent);"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <div class="hero-badge">🔥 PROMO EXCLUSIVE - JUSQU'À -50%</div>
+            <h1>MPi Literie</h1>
+            <div class="hero-slogan">"Le luxe accessible, le confort abordable"</div>
+            <p class="hero-subtitle">
+                Parce que la vie chère ne devrait pas rimer avec mauvais sommeil.<br>
+                Matelas hybrides importés, linge de maison premium & électroménager<br>
+                <strong>À prix cassés, avec paiement immédiat sécurisé !</strong>
+            </p>
+            
+            <div class="urgency-banner">
+                <p>⚡ PAIEMENT EN LIGNE 24/7 • LIVRAISON EXPRESS • GARANTIE MEILLEUR PRIX</p>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="#produits" class="btn btn-primary">
+                    <i class="fas fa-bed"></i> Voir les offres
+                </a>
+                <button onclick="openPaymentModal()" class="btn btn-urgent">
+                    <i class="fas fa-credit-card"></i> Payer en Urgence
+                </button>
+                <a href="https://wa.me/2250102481516" class="btn btn-secondary" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Devis Gratuit
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Methods Bar -->
+    <div class="payment-bar">
+        <div class="payment-container">
+            <div class="payment-item">
+                <i class="fas fa-mobile-alt"></i>
+                <span>Orange Money</span>
+            </div>
+            <div class="payment-item">
+                <i class="fas fa-money-bill-wave"></i>
+                <span>Mobile Money</span>
+            </div>
+            <div class="payment-item">
+                <i class="fas fa-credit-card"></i>
+                <span>Carte Bancaire</span>
+            </div>
+            <div class="payment-item">
+                <i class="fas fa-university"></i>
+                <span>Virement</span>
+            </div>
+            <div class="payment-item">
+                <i class="fas fa-hand-holding-usd"></i>
+                <span>Paiement à la Livraison</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pourquoi choisir MPi ?</h2>
+                <p>La qualité premium sans le prix premium - C'est notre combat contre la vie chère !</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-tags"></i>
+                    </div>
+                    <h3>Prix Imbattables</h3>
+                    <p>Jusqu'à 50% moins cher que la concurrence sur les matelas hybrides importés</p>
+                    <span class="price-tag">-50% GARANTIE</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Paiement Urgent 24/7</h3>
+                    <p>Payez en ligne à toute heure, même le week-end. Confirmation immédiate !</p>
+                    <span class="price-tag">DISPONIBLE NOW</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Garantie Anti-Vie Chère</h3>
+                    <p>Si vous trouvez moins cher ailleurs, on égale le prix -50% !</p>
+                    <span class="price-tag">MEILLEUR PRIX</span>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck-fast"></i>
+                    </div>
+                    <h3>Livraison Express</h3>
+                    <p>Livraison en 24-48h à Abidjan et partout en Côte d'Ivoire</p>
+                    <span class="price-tag">24H CHRONO</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="produits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nos Offres Anti-Crise</h2>
+                <p>Des produits d'exception à prix révolutionnaires - Stock limité !</p>
+            </div>
+            
+            <div class="category-tabs">
+                <button class="tab-btn active" onclick="filterProducts('all')">Tous les deals</button>
+                <button class="tab-btn" onclick="filterProducts('literie')">Literie (-40%)</button>
+                <button class="tab-btn" onclick="filterProducts('linge')">Linge Maison (-30%)</button>
+                <button class="tab-btn" onclick="filterProducts('electro')">Électro (-25%)</button>
+            </div>
+
+            <div class="products-grid" id="productsGrid">
+                <!-- Products inserted by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Products Section -->
+    <section class="custom-product-section container" id="personnaliser">
+        <div class="section-title">
+            <h2>Mes Articles Personnalisés</h2>
+            <p>Ajoutez vos propres produits avec prix d'urgence personnalisés</p>
+        </div>
+        
+        <form id="customProductForm" class="form-grid">
+            <div class="form-group">
+                <label>Nom de l'article</label>
+                <input type="text" id="customName" required placeholder="Ex: Matelas Orthopédique">
+            </div>
+            <div class="form-group">
+                <label>Catégorie</label>
+                <select id="customCategory">
+                    <option value="literie">Literie</option>
+                    <option value="linge">Linge de Maison</option>
+                    <option value="electro">Électroménager</option>
+                    <option value="autre">Autre</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Prix Normal (FCFA)</label>
+                <input type="number" id="customOldPrice" placeholder="Prix barré">
+            </div>
+            <div class="form-group">
+                <label>Prix URGENT (FCFA)</label>
+                <input type="number" id="customPrice" required placeholder="Votre prix cassé">
+            </div>
+            <div class="form-group full-width">
+                <label>Description</label>
+                <textarea id="customDesc" rows="3" placeholder="Décrivez votre offre spéciale..."></textarea>
+            </div>
+            <div class="form-group full-width">
+                <button type="submit" class="btn btn-urgent" style="width: 100%;">
+                    <i class="fas fa-plus"></i> Ajouter l'article en Urgence
+                </button>
+            </div>
+        </form>
+
+        <div class="custom-products-list" id="customProductsList"></div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div class="payment-modal" id="paymentModal">
+        <div class="payment-content">
+            <button class="close-modal" onclick="closePaymentModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="payment-header">
+                <h2><i class="fas fa-bolt" style="color: var(--urgent);"></i> Paiement Urgent</h2>
+                <p>Règlement sécurisé en 30 secondes - Disponible 24/7</p>
+            </div>
+
+            <div class="urgent-notice">
+                <i class="fas fa-shield-alt"></i>
+                <div>
+                    <strong>Paiement 100% Sécurisé</strong><br>
+                    Vos données sont chiffrées et protégées
+                </div>
+            </div>
+
+            <div class="payment-methods">
+                <div class="payment-method" onclick="selectPayment('orange')">
+                    <i class="fas fa-mobile-alt" style="color: #FF6600;"></i>
+                    <div class="payment-method-info">
+                        <h4>Orange Money</h4>
+                        <p>Paiement par téléphone</p>
+                    </div>
+                </div>
+                
+                <div class="payment-method" onclick="selectPayment('mtn')">
+                    <i class="fas fa-money-bill-wave" style="color: #0066CC;"></i>
+                    <div class="payment-method-info">
+                        <h4>MTN Mobile Money</h4>
+                        <p>Transfert rapide</p>
+                    </div>
+                </div>
+                
+                <div class="payment-method" onclick="selectPayment('card')">
+                    <i class="fas fa-credit-card" style="color: var(--primary);"></i>
+                    <div class="payment-method-info">
+                        <h4>Carte Bancaire</h4>
+                        <p>Visa, Mastercard, Verve</p>
+                    </div>
+                </div>
+                
+                <div class="payment-method" onclick="selectPayment('cash')">
+                    <i class="fas fa-hand-holding-usd" style="color: var(--success);"></i>
+                    <div class="payment-method-info">
+                        <h4>Paiement à la Livraison</h4>
+                        <p>Payez quand vous recevez</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="paymentFormContainer">
+                <input type="text" placeholder="Numéro de téléphone ou référence" id="paymentRef">
+                <input type="number" placeholder="Montant à payer (FCFA)" id="paymentAmount">
+                <button class="btn-pay-now" onclick="processPayment()">
+                    <i class="fas fa-lock"></i> Payer Maintenant
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-grid">
+            <div class="contact-info">
+                <h2>Contact Urgent MPi</h2>
+                <p style="margin-bottom: 2rem; opacity: 0.9;">
+                    Une question ? Besoin d'un devis express ?<br>
+                    Notre équipe est disponible 24/7 pour vous aider à économiser !
+                </p>
+                
+                <div class="contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <div>
+                        <strong>Ligne Urgente</strong><br>
+                        +225 01 02 48 15 16
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <strong>WhatsApp Direct</strong><br>
+                        +225 01 02 48 15 16
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <strong>Email</strong><br>
+                        urgent@mpiliterie.ci
+                    </div>
+                </div>
+
+                <a href="https://wa.me/2250102481516?text=URGENT:%20Je%20veux%20profiter%20de%20l'offre%20spéciale%20!" class="whatsapp-btn" target="_blank">
+                    <i class="fab fa-whatsapp"></i> Contacter en Urgence
+                </a>
+            </div>
+            
+            <div class="contact-form">
+                <h3>Demande de Devis Express</h3>
+                <form id="contactForm">
+                    <input type="text" placeholder="Votre nom" required>
+                    <input type="tel" placeholder="Votre téléphone" required>
+                    <input type="text" placeholder="Produit recherché" required>
+                    <textarea rows="3" placeholder="Message urgent..." required></textarea>
+                    <button type="submit" style="width: 100%; padding: 1rem; background: var(--secondary); color: white; border: none; border-radius: 10px; font-weight: 700; cursor: pointer;">
+                        Envoyer en Urgence
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Sidebar -->
+    <div class="overlay" id="overlay" onclick="toggleCart()"></div>
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3><i class="fas fa-shopping-cart"></i> Panier Urgent</h3>
+            <button class="icon-btn" onclick="toggleCart()" style="color: white;">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <p style="text-align: center; color: #999; padding: 2rem;">Votre panier est vide</p>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total:</span>
+                <span id="cartTotal">0 FCFA</span>
+            </div>
+            <button class="btn-checkout" onclick="openPaymentModal()">
+                <i class="fas fa-credit-card"></i> Payer en Ligne
+            </button>
+            <button class="btn-whatsapp-checkout" onclick="checkoutWhatsApp()">
+                <i class="fab fa-whatsapp"></i> Payer par WhatsApp
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-check-circle"></i>
+        <span id="toastMessage">Action réussie !</span>
+    </div>
+
+    <script>
+        // Data avec prix barrés pour montrer les économies
+        const products = [
+            {
+                id: 1,
+                name: "Matelas Hybride Royal",
+                category: "literie",
+                price: 275000,
+                oldPrice: 450000,
+                image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500",
+                badge: "-40%",
+                description: "Ressorts ensachés importés, mémoire de forme"
+            },
+            {
+                id: 2,
+                name: "Lit King Size Premium",
+                category: "literie",
+                price: 510000,
+                oldPrice: 850000,
+                image: "https://images.unsplash.com/photo-1505693416388-b0346efee535?w=500",
+                badge: "-40%",
+                description: "Bois massif, tête de lit capitonnée"
+            },
+            {
+                id: 3,
+                name: "Draps Coton Égyptien",
+                category: "linge",
+                price: 31500,
+                oldPrice: 45000,
+                image: "https://images.unsplash.com/photo-1629949009765-40fc74c9ec21?w=500",
+                badge: "-30%",
+                description: "100% coton égyptien, 600 fils"
+            },
+            {
+                id: 4,
+                name: "Couette Plume d'Oie",
+                category: "linge",
+                price: 66500,
+                oldPrice: 95000,
+                image: "https://images.unsplash.com/photo-1522771753035-a0a1f66cd459?w=500",
+                badge: "-30%",
+                description: "Chaude et légère, housse coton bio"
+            },
+            {
+                id: 5,
+                name: "Oreiller Mémoire Forme",
+                category: "literie",
+                price: 17500,
+                oldPrice: 25000,
+                image: "https://images.unsplash.com/photo-1584100936595-c0654b55a2e6?w=500",
+                badge: "-30%",
+                description: "Soutien cervical optimal"
+            },
+            {
+                id: 6,
+                name: "Peignoir Spa Premium",
+                category: "linge",
+                price: 24500,
+                oldPrice: 35000,
+                image: "https://images.unsplash.com/photo-1620799130404-edc6dcb6d633?w=500",
+                badge: "-30%",
+                description: "Coton bio éponge, confort maximal"
+            },
+            {
+                id: 7,
+                name: "Réfrigérateur Double Porte",
+                category: "electro",
+                price: 337500,
+                oldPrice: 450000,
+                image: "https://images.unsplash.com/photo-1571175443880-49e1d58b794a?w=500",
+                badge: "-25%",
+                description: "No Frost, économie d'énergie A+++"
+            },
+            {
+                id: 8,
+                name: "Machine à Laver 8kg",
+                category: "electro",
+                price: 240000,
+                oldPrice: 320000,
+                image: "https://images.unsplash.com/photo-1626806775351-538068a21838?w=500",
+                badge: "-25%",
+                description: "Essorage 1400 tours/min"
+            }
+        ];
+
+        let cart = [];
+        let customProducts = JSON.parse(localStorage.getItem('customProducts')) || [];
+        let selectedPaymentMethod = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            renderCustomProducts();
+            updateCartCount();
+        });
+
+        function renderProducts(filter = 'all') {
+            const grid = document.getElementById('productsGrid');
+            const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
+            
+            grid.innerHTML = filtered.map(product => `
+                <div class="product-card">
+                    <span class="product-badge">${product.badge}</span>
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <div class="product-category">${getCategoryName(product.category)}</div>
+                        <h3 class="product-title">${product.name}</h3>
+                        <p style="color: #666; font-size: 0.9rem; margin-bottom: 0.5rem;">${product.description}</p>
+                        <div class="product-price-box">
+                            <span class="product-price">${product.price.toLocaleString()} FCFA</span>
+                            <span class="product-old-price">${product.oldPrice.toLocaleString()} FCFA</span>
+                        </div>
+                        <div class="savings">Économisez ${(product.oldPrice - product.price).toLocaleString()} FCFA</div>
+                        <div class="product-actions" style="margin-top: 1rem;">
+                            <button class="btn-add-cart" onclick="addToCart(${product.id})">
+                                <i class="fas fa-cart-plus"></i> Panier
+                            </button>
+                            <button class="btn-pay-urgent" onclick="buyNow(${product.id})">
+                                <i class="fas fa-bolt"></i> Achat Urgent
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function getCategoryName(cat) {
+            const names = {
+                'literie': 'Literie',
+                'linge': 'Linge de Maison',
+                'electro': 'Électroménager'
+            };
+            return names[cat] || cat;
+        }
+
+        function filterProducts(category) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            renderProducts(category);
+        }
+
+        // Cart Functions
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const existing = cart.find(item => item.id === productId);
+            
+            if(existing) {
+                existing.quantity++;
+            } else {
+                cart.push({...product, quantity: 1});
+            }
+            
+            updateCart();
+            showToast(`${product.name} ajouté au panier !`);
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        function updateCart() {
+            updateCartCount();
+            renderCartItems();
+        }
+
+        function updateCartCount() {
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        function renderCartItems() {
+            const container = document.getElementById('cartItems');
+            const totalEl = document.getElementById('cartTotal');
+            
+            if(cart.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999; padding: 2rem;">Votre panier est vide</p>';
+                totalEl.textContent = '0 FCFA';
+                return;
+            }
+            
+            container.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}">
+                    <div class="cart-item-details">
+                        <div class="cart-item-title">${item.name}</div>
+                        <div style="font-size: 0.9rem; color: #666;">Qté: ${item.quantity}</div>
+                        <div class="cart-item-price">${(item.price * item.quantity).toLocaleString()} FCFA</div>
+                    </div>
+                    <button onclick="removeFromCart(${item.id})" style="background: none; border: none; color: var(--urgent); cursor: pointer;">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            `).join('');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            totalEl.textContent = total.toLocaleString() + ' FCFA';
+        }
+
+        function toggleCart() {
+            document.getElementById('cartSidebar').classList.toggle('open');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        // Payment Modal
+        function openPaymentModal() {
+            document.getElementById('paymentModal').classList.add('active');
+        }
+
+        function closePaymentModal() {
+            document.getElementById('paymentModal').classList.remove('active');
+        }
+
+        function selectPayment(method) {
+            selectedPaymentMethod = method;
+            document.querySelectorAll('.payment-method').forEach(el => el.classList.remove('selected'));
+            event.currentTarget.classList.add('selected');
+        }
+
+        function processPayment() {
+            const ref = document.getElementById('paymentRef').value;
+            const amount = document.getElementById('paymentAmount').value;
+            
+            if(!selectedPaymentMethod) {
+                showToast('Veuillez choisir un mode de paiement');
+                return;
+            }
+            if(!ref || !amount) {
+                showToast('Veuillez remplir tous les champs');
+                return;
+            }
+            
+            // Simulation de traitement
+            showToast('Traitement du paiement en cours...');
+            setTimeout(() => {
+                showToast('✅ Paiement confirmé ! Confirmation envoyée par SMS.');
+                closePaymentModal();
+                cart = [];
+                updateCart();
+            }, 2000);
+        }
+
+        function buyNow(productId) {
+            const product = products.find(p => p.id === productId);
+            document.getElementById('paymentAmount').value = product.price;
+            openPaymentModal();
+            showToast(`Paiement urgent pour: ${product.name}`);
+        }
+
+        function checkoutWhatsApp() {
+            if(cart.length === 0) {
+                showToast('Votre panier est vide !');
+                return;
+            }
+            
+            let message = 'URGENT - Nouvelle Commande MPi:%0A%0A';
+            let total = 0;
+            
+            cart.forEach(item => {
+                message += `• ${item.name} (x${item.quantity}): ${(item.price * item.quantity).toLocaleString()} FCFA%0A`;
+                total += item.price * item.quantity;
+            });
+            
+            message += `%0ATotal: ${total.toLocaleString()} FCFA%0A%0AJe souhaite payer en urgence !`;
+            
+            window.open(`https://wa.me/2250102481516?text=${message}`, '_blank');
+        }
+
+        // Custom Products
+        document.getElementById('customProductForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const newProduct = {
+                id: Date.now(),
+                name: document.getElementById('customName').value,
+                category: document.getElementById('customCategory').value,
+                price: parseInt(document.getElementById('customPrice').value),
+                oldPrice: parseInt(document.getElementById('customOldPrice').value) || null,
+                description: document.getElementById('customDesc').value,
+                isCustom: true
+            };
+            
+            customProducts.push(newProduct);
+            localStorage.setItem('customProducts', JSON.stringify(customProducts));
+            
+            renderCustomProducts();
+            e.target.reset();
+            showToast('Article urgent ajouté !');
+        });
+
+        function renderCustomProducts() {
+            const container = document.getElementById('customProductsList');
+            
+            if(customProducts.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1/-1;">Aucun article personnalisé</p>';
+                return;
+            }
+            
+            container.innerHTML = customProducts.map(product => `
+                <div class="custom-product-card">
+                    <button class="delete-btn" onclick="deleteCustomProduct(${product.id})">
+                        <i class="fas fa-times"></i>
+                    </button>
+                    <h4 style="color: var(--primary); margin-bottom: 0.5rem;">${product.name}</h4>
+                    <div style="margin-bottom: 0.5rem;">
+                        <span style="color: var(--primary); font-weight: 700; font-size: 1.2rem;">
+                            ${product.price.toLocaleString()} FCFA
+                        </span>
+                        ${product.oldPrice ? `<span style="text-decoration: line-through; color: #999; margin-left: 0.5rem;">${product.oldPrice.toLocaleString()} FCFA</span>` : ''}
+                    </div>
+                    <p style="font-size: 0.9rem; color: #666; margin-bottom: 1rem;">
+                        ${getCategoryName(product.category)}
+                    </p>
+                    <button class="btn-add-cart" onclick="addCustomToCart(${product.id})" style="width: 100%;">
+                        <i class="fas fa-cart-plus"></i> Ajouter au panier
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function deleteCustomProduct(id) {
+            customProducts = customProducts.filter(p => p.id !== id);
+            localStorage.setItem('customProducts', JSON.stringify(customProducts));
+            renderCustomProducts();
+            showToast('Article supprimé');
+        }
+
+        function addCustomToCart(productId) {
+            const product = customProducts.find(p => p.id === productId);
+            cart.push({...product, quantity: 1, image: 'https://via.placeholder.com/400x300?text=MPi'});
+            updateCart();
+            showToast(`${product.name} ajouté au panier`);
+        }
+
+        // Utilities
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
+        }
+
+        document.getElementById('contactForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            showToast('Message urgent envoyé ! Réponse sous 30min.');
+            e.target.reset();
+        });
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
+commit message : création du site MPi Literie 
